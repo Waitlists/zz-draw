@@ -6,17 +6,23 @@ const io = require('socket.io')(http, {
 });
 
 const PORT = process.env.PORT || 3000;
-
 app.use(express.static('public'));
 
+let drawHistory = [];
+
 io.on('connection', socket => {
-  console.log('A user connected');
+  console.log('User connected');
+
+  // Send existing canvas history
+  socket.emit('init', drawHistory);
 
   socket.on('draw', data => {
+    drawHistory.push(data);
     socket.broadcast.emit('draw', data);
   });
 
   socket.on('clear', () => {
+    drawHistory = [];
     io.emit('clear');
   });
 
