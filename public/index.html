@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Drawing</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-900 text-white overflow-hidden">
+  <div class="flex flex-col h-screen">
+    <div class="bg-gray-800 p-2 flex items-center space-x-4">
+      <label class="text-sm">Color:</label>
+      <input type="color" id="colorPicker" value="#ffffff" />
+      <label class="text-sm">Size:</label>
+      <input type="range" id="sizePicker" min="1" max="30" value="5" class="w-24" />
+      <button id="eraser" class="bg-red-600 px-2 py-1 rounded">Eraser</button>
+      <button id="clear" class="bg-blue-600 px-2 py-1 rounded">Clear</button>
+    </div>
+    <canvas id="canvas" class="flex-1 bg-white"></canvas>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
